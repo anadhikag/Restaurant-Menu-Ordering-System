@@ -1,0 +1,9 @@
+<h2>Place Order</h2>
+
+<form (ngSubmit)="placeOrder()">
+  <input placeholder="Name" [(ngModel)]="name" name="name" required /><br><br>
+  <input placeholder="Phone" [(ngModel)]="phone" name="phone" required /><br><br>
+  <textarea placeholder="Address" [(ngModel)]="address" name="address"></textarea><br><br>
+
+  <button type="submit">Place Order</button>
+</form>
