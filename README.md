@@ -5,6 +5,14 @@ This application allows users to browse menu items, add items to a cart, delete 
 
 ---
 
+### Menu Page
+![Menu Page](screenshots/menu-page.png)
+### Cart Page
+![Cart Page](screenshots/cart-page.png)
+### Order Page
+![Order Page](screenshots/order-page.png)
+
+
 ## Project Objective
 
 To build a real-world, data-driven Angular application that demonstrates:
