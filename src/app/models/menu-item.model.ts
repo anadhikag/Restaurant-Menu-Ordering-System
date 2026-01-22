@@ -4,4 +4,7 @@ export interface MenuItem {
   description: string;
   price: number;
   category: string;
+
+  imageUrl?: string;       // optional
+  ingredients?: string[]; // optional
 }

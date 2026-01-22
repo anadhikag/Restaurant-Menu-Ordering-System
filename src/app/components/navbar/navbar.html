@@ -1,5 +1,8 @@
-<nav style="background:#d32f2f; color:white; padding:10px">
-  <a routerLink="/" style="color:white; margin-right:15px">Menu</a>
-  <a routerLink="/cart" style="color:white; margin-right:15px">Cart</a>
-  <a routerLink="/order" style="color:white">Order</a>
-</nav>
+<mat-toolbar color="primary" class="navbar">
+  <span class="logo">🍽️ Restaurant</span>
+  <span style="flex:1"></span>
+
+  <button mat-button routerLink="/menu">Menu</button>
+  <button mat-button routerLink="/cart">Cart</button>
+  <button mat-button routerLink="/order">Order</button>
+</mat-toolbar>

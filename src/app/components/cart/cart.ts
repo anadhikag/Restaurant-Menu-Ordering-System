@@ -1,29 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../services/cart.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+ 
 import { MenuItem } from '../../models/menu-item.model';
+import { CartService } from '../../services/cart.service';
+
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './cart.html'
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
+  ],
+  templateUrl: './cart.html',
+  styleUrls: ['./cart.css']
 })
-export class Cart implements OnInit {
-  cart: MenuItem[] = [];
+export class Cart implements OnInit, AfterViewInit {
+
+  cartItems: MenuItem[] = [];
+  total = 0;
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {
-    this.cart = this.cartService.getCart();
+  ngOnInit(): void {
+     this.loadCart();
   }
 
-  remove(index: number) {
-    this.cartService.removeFromCart(index);
-    this.cart = this.cartService.getCart();
-  }
+  ngAfterViewInit(): void {
+  this.loadCart();
+}
 
-  total() {
-    return this.cart.reduce((sum, i) => sum + i.price, 0);
-  }
+  loadCart(): void {
+  this.cartItems = this.cartService.getItems();
+  this.total = this.cartService.getTotal();
+}
+
+  remove(item: MenuItem): void {
+  this.cartService.remove(item);
+  this.loadCart();
+}
 }

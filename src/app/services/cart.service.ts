@@ -6,6 +6,7 @@ import { MenuItem } from '../models/menu-item.model';
   providedIn: 'root'
 })
 export class CartService {
+
   private key = 'cart';
   private isBrowser: boolean;
 
@@ -13,25 +14,38 @@ export class CartService {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  getCart(): MenuItem[] {
+  // internal helper
+  private getCart(): MenuItem[] {
     if (!this.isBrowser) return [];
     return JSON.parse(localStorage.getItem(this.key) || '[]');
   }
 
-  addToCart(item: MenuItem) {
+  private saveCart(cart: MenuItem[]): void {
+    if (!this.isBrowser) return;
+    localStorage.setItem(this.key, JSON.stringify(cart));
+  }
+
+  addToCart(item: MenuItem): void {
     const cart = this.getCart();
     cart.push(item);
-    localStorage.setItem(this.key, JSON.stringify(cart));
+    this.saveCart(cart);
   }
 
-  removeFromCart(index: number) {
-    const cart = this.getCart();
-    cart.splice(index, 1);
-    localStorage.setItem(this.key, JSON.stringify(cart));
+  getItems(): MenuItem[] {
+    return this.getCart();
   }
 
-  clearCart() {
+  remove(item: MenuItem): void {
+  const cart = this.getCart().filter(i => i.id !== item.id);
+  this.saveCart(cart);
+}
+
+  clearCart(): void {
     if (!this.isBrowser) return;
     localStorage.removeItem(this.key);
+  }
+
+  getTotal(): number {
+    return this.getCart().reduce((sum, item) => sum + item.price, 0);
   }
 }

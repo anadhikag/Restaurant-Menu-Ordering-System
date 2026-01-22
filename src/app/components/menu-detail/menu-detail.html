@@ -1,7 +1,28 @@
-<div *ngIf="item">
-  <h2>{{ item.name }}</h2>
-  <p>{{ item.description }}</p>
-  <p>Price: ₹{{ item.price }}</p>
+<mat-card *ngIf="item as i" class="detail-card">
+  <img
+    mat-card-image
+    [src]="i.imageUrl ?? 'assets/food.jpg'"
+    alt="{{ i.name }}"
+  />
 
-  <button (click)="addToCart()">Add to Cart</button>
-</div>
+  <mat-card-content>
+    <h2>{{ i.name }}</h2>
+    <p>{{ i.description }}</p>
+
+    <p *ngIf="i.ingredients?.length">
+      <strong>Ingredients:</strong>
+       {{ i.ingredients?.join(', ') }}
+    </p>
+
+    <h3>₹{{ i.price }}</h3>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToCart(i)">
+      Add to Cart
+    </button>
+  </mat-card-actions>
+</mat-card>
