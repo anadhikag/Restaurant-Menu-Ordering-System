@@ -1,0 +1,115 @@
+{
+  "menu": [
+    {
+      "id": "1",
+      "name": "Pizza",
+      "description": "Cheese pizza",
+      "price": 250,
+      "category": "Main",
+      "recommended": true,
+      "imageUrl": "assets/images/pizza.jpeg"
+    },
+    {
+      "id": "2",
+      "name": "Burger",
+      "description": "Veg burger",
+      "price": 120,
+      "category": "Main",
+      "recommended": false,
+      "imageUrl": "assets/images/burger.jpeg"
+    },
+    {
+      "id": "3",
+      "name": "Pasta",
+      "description": "White sauce pasta",
+      "price": 200,
+      "category": "Main",
+      "discounted": true,
+      "imageUrl": "assets/images/pasta.jpeg"
+    },
+    {
+      "id": "4",
+      "name": "Ice Cream",
+      "description": "Vanilla scoop",
+      "price": 80,
+      "category": "Dessert",
+      "recommended": true,
+      "imageUrl": "assets/images/icecream.jpeg"
+    }
+  ],
+  "orders": [
+    {
+      "id": "2055",
+      "items": [
+        {
+          "id": "4",
+          "name": "Ice Cream",
+          "description": "Vanilla scoop",
+          "price": 80,
+          "category": "Dessert",
+          "recommended": true,
+          "imageUrl": "assets/images/icecream.jpeg"
+        },
+        {
+          "id": "3",
+          "name": "Pasta",
+          "description": "White sauce pasta",
+          "price": 200,
+          "category": "Main",
+          "discounted": true,
+          "imageUrl": "assets/images/pasta.jpeg"
+        }
+      ],
+      "totalAmount": 280,
+      "customer": {
+        "name": "john",
+        "email": "john@gmail.com",
+        "address": "123main ",
+        "paymentMethod": "cash"
+      }
+    },
+    {
+      "id": "69b6",
+      "items": [
+        {
+          "id": "1",
+          "name": "Pizza",
+          "description": "Cheese pizza",
+          "price": 250,
+          "category": "Main",
+          "recommended": true,
+          "imageUrl": "assets/images/pizza.jpeg"
+        }
+      ],
+      "totalAmount": 250,
+      "customer": {
+        "name": "john",
+        "email": "john@gmail.com",
+        "address": "123main",
+        "paymentMethod": "cash"
+      }
+    },
+    {
+      "id": "2ce5",
+      "items": [
+        {
+          "id": "1",
+          "name": "Pizza",
+          "description": "Cheese pizza",
+          "price": 250,
+          "category": "Main",
+          "recommended": true,
+          "imageUrl": "assets/images/pizza.jpeg"
+        }
+      ],
+      "totalAmount": 250,
+      "customer": {
+        "name": "ffbbbb",
+        "email": "ff@gmail.com",
+        "address": "mhckhvkh",
+        "paymentMethod": "cash"
+      }
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,16 @@
+.cart-item {
+margin-bottom: 12px;
+}
+
+
+.row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
+.total-card {
+margin-top: 20px;
+text-align: right;
+}

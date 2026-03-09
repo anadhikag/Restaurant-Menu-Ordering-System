@@ -1,0 +1,36 @@
+<p *ngIf="cartItems.length === 0">Cart is empty</p>
+
+<div *ngFor="let item of cartItems">
+  <mat-card class="cart-item">
+    <div class="row">
+      <span>{{ item.name }}</span>
+      <!-- Use built-in currency pipe -->
+      <span>{{ item.price | currency:'INR':'symbol':'1.0-0' }}</span>
+
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="remove(item)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>
+
+<mat-card *ngIf="cartItems.length > 0" class="total-card">
+  <h3>Total: {{ total | currency:'INR':'symbol':'1.0-0' }}</h3>
+
+  <!-- Reactive Form -->
+  <form [formGroup]="cartForm" (ngSubmit)="proceedToCheckout()">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Special Instructions</mat-label>
+      <textarea matInput formControlName="specialInstructions" placeholder="E.g. Less spicy, extra cheese"></textarea>
+    </mat-form-field>
+
+    <div style="margin-top: 16px;">
+      <button mat-raised-button color="primary" type="submit">
+        Proceed to Checkout
+      </button>
+    </div>
+  </form>
+</mat-card>

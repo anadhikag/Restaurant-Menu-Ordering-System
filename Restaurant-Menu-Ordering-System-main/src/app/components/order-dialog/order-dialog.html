@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>
+  <mat-icon color="primary" style="vertical-align: middle; margin-right: 8px;">check_circle</mat-icon>
+  Order Confirmed
+</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Thank you for your order!</p>
+  <p>Your order ID is: <strong>#{{ data.orderId }}</strong></p>
+  <p>We are preparing your food and it will be out for delivery shortly.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Return to Menu</button>
+</mat-dialog-actions>

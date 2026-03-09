@@ -1,0 +1,43 @@
+<mat-card class="checkout-card">
+  <h2>Checkout</h2>
+  
+  <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()" class="checkout-form">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="name" placeholder="John Doe">
+      <mat-error *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required.</mat-error>
+      <mat-error *ngIf="checkoutForm.get('name')?.hasError('minlength')">Minimum 3 characters required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="john@example.com">
+      <mat-error *ngIf="checkoutForm.get('email')?.hasError('required')">Email is required.</mat-error>
+      <mat-error *ngIf="checkoutForm.get('email')?.hasError('email')">Invalid email format.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Delivery Address</mat-label>
+      <textarea matInput formControlName="address" rows="3" placeholder="123 Main St, City"></textarea>
+      <mat-error *ngIf="checkoutForm.get('address')?.hasError('required')">Address is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Payment Method</mat-label>
+      <mat-select formControlName="paymentMethod">
+        <mat-option value="card">Credit / Debit Card</mat-option>
+        <mat-option value="cash">Cash on Delivery</mat-option>
+        <mat-option value="upi">UPI</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="checkoutForm.invalid">
+        Confirm Order
+      </button>
+    </div>
+
+  </form>
+</mat-card>
+
